@@ -1,5 +1,4 @@
-# Table of contents
-‌# Summary​
+# Summary​
 
 ## Use headings to create page groups like this one​
 * [gitbook](README.md)
