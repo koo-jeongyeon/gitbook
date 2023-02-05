@@ -2,7 +2,7 @@
 
 * [🖐 Welcome](README.md)
 
-## Spring
+## Spring test
 
 * [spring boot](<springboot/README.md>)
   * [스프링 핵심 원리](springboot/springbase/README.md)
