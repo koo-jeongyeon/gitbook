@@ -32,7 +32,7 @@ git 클론시 상당히 머리아픈 상황들이 있었음
 
 진짜해결 : 아래 형광색 부분이 defaut 로 되어있으면 에러나는거였음
 
-![%5BIntelliJ%20setting%5D%20spring%20%E1%84%89%E1%85%A2%E1%86%BC%E1%84%89%E1%85%A5%E1%86%BC%20%E1%84%86%E1%85%B5%E1%86%BE%20git%20clone%20ed4732495c0b454993db2ca327b4812b/Untitled.png](../../image/InteliiJ//Untitled.png)
+![Untitled.png](../../image/InteliiJ//Untitled.png)
 
 이클립스에도 시도??
 
@@ -52,8 +52,8 @@ pom 에 스프링 설정을 했을때와
 
 설정완료된 상태
 
-![%5BIntelliJ%20setting%5D%20spring%20%E1%84%89%E1%85%A2%E1%86%BC%E1%84%89%E1%85%A5%E1%86%BC%20%E1%84%86%E1%85%B5%E1%86%BE%20git%20clone%20ed4732495c0b454993db2ca327b4812b/Untitled%201.png](../../image/InteliiJ/Untitled%201.png)
+![Untitled%201.png](../../image/InteliiJ/Untitled%201.png)
 
-![%5BIntelliJ%20setting%5D%20spring%20%E1%84%89%E1%85%A2%E1%86%BC%E1%84%89%E1%85%A5%E1%86%BC%20%E1%84%86%E1%85%B5%E1%86%BE%20git%20clone%20ed4732495c0b454993db2ca327b4812b/Untitled%202.png](../../image/InteliiJ/Untitled%202.png)
+![Untitled%202.png](../../image/InteliiJ/Untitled%202.png)
 
-![%5BIntelliJ%20setting%5D%20spring%20%E1%84%89%E1%85%A2%E1%86%BC%E1%84%89%E1%85%A5%E1%86%BC%20%E1%84%86%E1%85%B5%E1%86%BE%20git%20clone%20ed4732495c0b454993db2ca327b4812b/Untitled%203.png](../../image/InteliiJ/Untitled%203.png)
+![Untitled%203.png](../../image/InteliiJ/Untitled%203.png)
