@@ -9,7 +9,7 @@
 * 이동에 대한것만 다룰것이다.
 * 무료에셋 프리팹의 walk와 Run이 기본으로 등록되어 있어 이걸 트리거로 사용할까 했지만 Speed를 등록해 캐릭터의 이동 속도에 따라 걷거나 뛸수있도록 구현하였다.
 
-<figure><img src="../.gitbook/assets/스크린샷 2023-02-05 오후 11.14.20.png" alt=""><figcaption></figcaption></figure>
+![](../image/unity_move1.png)
 
 * Walk In Place 와 Run In Place 만 확인하면된다.
 * Walk In Place
@@ -20,7 +20,7 @@
   * Walk In Place와 연결된 방향의 Conditions도 같은 방식으로 등록해주면 된다. 필자는 Speed가 4이상일때 뛰는 모션으로 변경되도록 하였다
   * 걷다가 뛰거나 뛰다가 걷거나 하는건 되는데 처음부터 뛰는모션으로 가는건 같은 방식으로 하면 잘 안되어 좀더 알아봐야할듯하다. 한마디로 Idle -> Run In Place 를 위와 같은 방식으로 Greater, 4로 작성하면 스피드가 올라갈때 Walk 쪽으로 가버려 적용이 되지 않는다.
 
-<figure><img src="../.gitbook/assets/스크린샷 2023-02-05 오후 11.13.24.png" alt=""><figcaption></figcaption></figure>
+![](../image/unity_move2.png)
 
 ### 플레이어 이동 코드 구현
 
@@ -28,7 +28,7 @@
 * PlayerMovement.cs 작성하여 프리팹 오브젝트에 연결하였다.
   * 유니티 3D 액션게임\_송호연 님의 책과 인터넷을 참고해 작성함
 
-<figure><img src="../.gitbook/assets/스크린샷 2023-02-05 오후 11.30.54.png" alt=""><figcaption></figcaption></figure>
+![](../image/unity_move3.png)
 
 ```csharp
 using System.Collections;
