@@ -6,12 +6,12 @@ Security
 
 인증 Authentication - 인증 하는거
 
-인가 Authorization  - 권한 주는거
+인가 Authorization  - 권한 주는거
 
 에러처리시 Security에서 커스텀 하는 클래스들
 
-- AccessDeniedHandler - 권한체크하고 권한 없으면 동작 - 권한
-- AuthenticationEntryPoint - 인증안된 유저가 요청했을때 - 인증
+* AccessDeniedHandler - 권한체크하고 권한 없으면 동작 - 권한
+* AuthenticationEntryPoint - 인증안된 유저가 요청했을때 - 인증
 
 개발자가 커스텀 예외처리 하는건 스프링 영역임
 
@@ -21,7 +21,7 @@ But 시큐리티는 스프링 이전에 필터링 하고 DispatcherServlet 에 �
 
 본인은 인증만 구현함
 
-- 시큐리티 에러 종류
+* 시큐리티 에러 종류
 
 ```
 /**
@@ -37,8 +37,8 @@ But 시큐리티는 스프링 이전에 필터링 하고 DispatcherServlet 에 �
 */
 ```
 
-- `AuthenticationEntryPoint` 를 구현한 시큐리티 에러 처리 `commence` 오버라이드
-- `ApiException` 의 경우 참고 [에러 핸들링 ****ExceptionHandler****](%E1%84%8B%E1%85%A6%E1%84%85%E1%85%A5%20%E1%84%92%E1%85%A2%E1%86%AB%E1%84%83%E1%85%B3%E1%86%AF%E1%84%85%E1%85%B5%E1%86%BC%20ExceptionHandler%2015217a94272a422e82e413221009a8b2.md)
+* `AuthenticationEntryPoint` 를 구현한 시큐리티 에러 처리 `commence` 오버라이드
+* `ApiException` 의 경우 참고 [에러 핸들링 **ExceptionHandler**](%E1%84%8B%E1%85%A6%E1%84%85%E1%85%A5%20%E1%84%92%E1%85%A2%E1%86%AB%E1%84%83%E1%85%B3%E1%86%AF%E1%84%85%E1%85%B5%E1%86%BC%20ExceptionHandler%2015217a94272a422e82e413221009a8b2.md)
 
 ```java
 @Override
@@ -58,9 +58,9 @@ But 시큐리티는 스프링 이전에 필터링 하고 DispatcherServlet 에 �
 }
 ```
 
-- handleException 메서드
-- `@ExceptionHandler` 같은걸로 처리되지 않아서 `HttpServletResponse` 를 활용해 응답을 보냄
-- 참고
+* handleException 메서드
+* `@ExceptionHandler` 같은걸로 처리되지 않아서 `HttpServletResponse` 를 활용해 응답을 보냄
+* 참고
 
 [Handle spring security authentication exceptions with @ExceptionHandler](https://stackoverflow.com/questions/19767267/handle-spring-security-authentication-exceptions-with-exceptionhandler)
 
@@ -92,7 +92,7 @@ JWT 에러 종류
 */
 ```
 
-- 여기있는게 다는 아님 필요해보이는것만 일단 검색해서 사용했음
+* 여기있는게 다는 아님 필요해보이는것만 일단 검색해서 사용했음
 
 ```java
 @Override
@@ -111,9 +111,9 @@ log.error("jwt error: {} : {}", errors ,e.getMessage());
 }
 ```
 
-- `OncePerRequestFilter` 를 구현하고 `doFilterInternal` 를 오버라이드
-- 인증과 같은 방식, `handleException` 사용
-- `getAuthentication` 메서드는 `TokenProvider` 클래스를 만들고 토큰을 파싱해 유저정보를 가져옴
+* `OncePerRequestFilter` 를 구현하고 `doFilterInternal` 를 오버라이드
+* 인증과 같은 방식, `handleException` 사용
+* `getAuthentication` 메서드는 `TokenProvider` 클래스를 만들고 토큰을 파싱해 유저정보를 가져옴
 
 ```java
 public String getAuthenticationUser(String token) {
@@ -150,7 +150,7 @@ public Authentication getAuthentication(HttpServletRequest request) {
 }
 ```
 
-- 토큰 생성이나 get 등 토큰에 관련된 메서드를 다 여기다 만듬, 때문에 여기서 예외처리해줌
+* 토큰 생성이나 get 등 토큰에 관련된 메서드를 다 여기다 만듬, 때문에 여기서 예외처리해줌
 
 ```java
 JWTAuthenticationFilter authFilter = new JWTAuthenticationFilter(this.tokenProvider);
@@ -161,9 +161,9 @@ http
 		.addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class);
 ```
 
-- `WebSecurityConfigurerAdapter` 를 구현한 시큐리티 config 파일의 설정
-- 인증관련 에러 핸들링 넣어주고
-- UsernamePasswordAuthenticationFilter 는 인증관련 클래스인데 (아이디 비번 체크함) 인증전에 토큰관련된 예외처리 먼저한다는 거임
+* `WebSecurityConfigurerAdapter` 를 구현한 시큐리티 config 파일의 설정
+* 인증관련 에러 핸들링 넣어주고
+* UsernamePasswordAuthenticationFilter 는 인증관련 클래스인데 (아이디 비번 체크함) 인증전에 토큰관련된 예외처리 먼저한다는 거임
 
 ### 개발시 문제 상황
 
@@ -171,7 +171,7 @@ http
 
 그래서 에러의 이유를 찾아봄
 
-- json 이 아니라 html 로 요청 (/) 했을때 에러가남 -> 뷰리졸버를 찾는데 없어서 에러가 나고 -> /error 요청 -> resources, static 등 아래 정적파일 찾는데 -> 이것들에 관해 인증 허용이 안되서 (에러페이지에 인증X) 인증에러가남
+* json 이 아니라 html 로 요청 (/) 했을때 에러가남 -> 뷰리졸버를 찾는데 없어서 에러가 나고 -> /error 요청 -> resources, static 등 아래 정적파일 찾는데 -> 이것들에 관해 인증 허용이 안되서 (에러페이지에 인증X) 인증에러가남
 
 `WebSecurityConfigurerAdapter` 를 구현한 클래스에 정적파일 접근 권한 줌
 
@@ -223,15 +223,15 @@ http
 
 [https://devlog-wjdrbs96.tistory.com/429](https://devlog-wjdrbs96.tistory.com/429)
 
-- CORS
+* CORS
 
 [https://atoz-develop.tistory.com/entry/Spring-BootSpring-Web-MVC-ViewController%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4%EC%84%9C-%EB%B7%B0-%EB%A7%A4%ED%95%91%ED%95%98%EA%B8%B0](https://atoz-develop.tistory.com/entry/Spring-BootSpring-Web-MVC-ViewController%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4%EC%84%9C-%EB%B7%B0-%EB%A7%A4%ED%95%91%ED%95%98%EA%B8%B0)
 
-- WebMvcConfig 는 시큐리티 필터가 먼저 막음,,, 그래서 필터에서 허용해줘야됨
+* WebMvcConfig 는 시큐리티 필터가 먼저 막음,,, 그래서 필터에서 허용해줘야됨
 
 [https://csy7792.tistory.com/243](https://csy7792.tistory.com/243)
 
-- csrf 도 잘 설정해줘야한다고함 Spring Security csrf token 검색 ㄱ
+* csrf 도 잘 설정해줘야한다고함 Spring Security csrf token 검색 ㄱ
 
 [https://hou27.tistory.com/entry/Spring-Security-JWT](https://hou27.tistory.com/entry/Spring-Security-JWT)
 

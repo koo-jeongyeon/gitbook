@@ -31,10 +31,3 @@
   * [lib](springboot/lib/README.md)
     * [lombok](springboot/lib/lombok.md)
     * [tiles](springboot/lib/tiles.md)
-
-## language
-
-* [java](language/java/README.md)
-  * [자바의 정석](language/java/undefined/README.md)
-    * [generics](language/java/undefined/generics.md)
-  * [환경설정](language/java/undefined-1.md)
