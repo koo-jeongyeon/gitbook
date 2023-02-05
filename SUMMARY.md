@@ -2,7 +2,7 @@
 
 * [🖐 Welcome](README.md)
 
-## Spring test
+## Spring
 
 * [spring boot](<springboot/README.md>)
   * [스프링 핵심 원리](springboot/springbase/README.md)
@@ -21,5 +21,6 @@
   * [로그 핸들링](springboot/loghandling/README.md)
     * [HttpRequestServlet 래핑](springboot/loghandling/loghandling1.md)
   * [gradle](springboot/gradle/README.md)
+    * [hidetake.ssh 키파일 설정](springboot/gradle/gradle1.md)
   * [maven](springboot/maven/README.md)
   * [security and JWT](springboot/securityJWT/README.md)
