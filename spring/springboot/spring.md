@@ -17,11 +17,11 @@
 
 ***
 
-<figure><img src="../.gitbook/assets/spring_boot_logo.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/spring_boot_logo.png" alt=""><figcaption></figcaption></figure>
 
 스프링이란?
 
-![스크린샷 2022-07-18 오후 2.55.11.png](spring/스크린샷\_2022-07-18\_오후\_2.55.11.png)
+![스크린샷 2022-07-18 오후 2.55.11.png](../../SpringBoot/spring/스크린샷\_2022-07-18\_오후\_2.55.11.png)
 
 * 스프링 데이터는 JPA같이 데이터를 다루기 쉽게
 * 스프링 세션은 세션을 다루기 쉽게
