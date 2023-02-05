@@ -4,7 +4,7 @@
 
 ## Spring
 
-* [spring boot](<springboot/README.md>)
+* [spring boot](springboot/README.md)
   * [스프링 핵심 원리](springboot/springbase/README.md)
     * [객체지향 설계와 스프링](springboot/springbase/springbase1.md)
     * [스프링IoC컨테이너와 bean](springboot/springbase/springbase2.md)
@@ -31,3 +31,10 @@
   * [lib](springboot/lib/README.md)
     * [lombok](springboot/lib/lombok.md)
     * [tiles](springboot/lib/tiles.md)
+
+## language
+
+* [java](language/java/README.md)
+  * [자바의 정석](language/java/undefined/README.md)
+    * [generics](language/java/undefined/generics.md)
+  * [환경설정](language/java/undefined-1.md)
