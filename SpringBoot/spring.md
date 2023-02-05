@@ -17,8 +17,6 @@
 
 ***
 
-***
-
 <figure><img src="../.gitbook/assets/spring_boot_logo.png" alt=""><figcaption></figcaption></figure>
 
 스프링이란?
