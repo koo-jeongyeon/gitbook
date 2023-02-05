@@ -1,4 +1,4 @@
-# 스케쥴링 설정
+# 스케쥴링 설정시 에러 상황
 
 생성일: 2021년 5월 25일 오후 2:09
 
@@ -12,9 +12,11 @@ No thread-bound request found: Are you referring to request attributes outside o
 
 스케줄링 설정엔 여러 방법이 있지만 어노테이션이 제일 간단함 
 
+```
 xmlns:task="[http://www.springframework.org/schema/task](http://www.springframework.org/schema/task)"
 
 [http://www.springframework.org/schema/task](http://www.springframework.org/schema/task) [http://www.springframework.org/schema/task/spring-task-4.0.xsd](http://www.springframework.org/schema/task/spring-task-4.0.xsd)
+```
 
 추가해주고
 

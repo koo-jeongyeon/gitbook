@@ -32,7 +32,7 @@ git 클론시 상당히 머리아픈 상황들이 있었음
 
 진짜해결 : 아래 형광색 부분이 defaut 로 되어있으면 에러나는거였음
 
-![Untitled.png](../../image/InteliiJ//Untitled.png)
+![Untitled.png](../../image/Untitled.png)
 
 이클립스에도 시도??
 
@@ -52,8 +52,8 @@ pom 에 스프링 설정을 했을때와
 
 설정완료된 상태
 
-![Untitled%201.png](../../image/InteliiJ/Untitled%201.png)
+![Untitled%201.png](../../image/Untitled%201.png)
 
-![Untitled%202.png](../../image/InteliiJ/Untitled%202.png)
+![Untitled%202.png](../../image/Untitled%202.png)
 
-![Untitled%203.png](../../image/InteliiJ/Untitled%203.png)
+![Untitled%203.png](../../image/Untitled%203.png)
