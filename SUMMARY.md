@@ -42,3 +42,4 @@
 ## unity
 
 * [캐릭터 이동](unity/playermove.md)
+* [카메라](unity/camera.md)
