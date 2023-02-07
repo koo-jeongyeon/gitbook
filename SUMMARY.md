@@ -39,6 +39,12 @@
   * [자바의 정석](language/java/standardofjava/README.md)
     * [generics](language/java/standardofjava/generics.md)
 
+
+## server
+
+* [AWS](server/aws/README.md)
+  * [MongoDB & Lambda VPC peering ,endpoint설정](server/aws/vpcpeering.md)
+
 ## unity
 
 * [캐릭터 이동](unity/playermove.md)
