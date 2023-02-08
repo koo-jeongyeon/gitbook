@@ -44,6 +44,9 @@
 
 * [AWS](server/aws/README.md)
   * [MongoDB & Lambda VPC peering ,endpoint설정](server/aws/vpcpeering.md)
+  * [SAM 개념](server/aws/sam1.md)
+  * [SAM S3이벤트 테스트](server/aws/sam2.md)
+  * [SAM intellij 배포](server/aws/sam3.md)
 
 ## unity
 
