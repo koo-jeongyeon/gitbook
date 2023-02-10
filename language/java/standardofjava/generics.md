@@ -136,6 +136,181 @@ class Toy {
 }
 ```
 
+## 제한된 지네릭 클래스
+
+* 매개변수 T에 지정할 수 있는 타입의 종류를 제한할 수 있는 방법
+* 제한하지 않으면 모든 종류의 타입이 지정되기 때문에 fruitBox에 Toy를 담을수도 있다
+
+### extends 사용
+
+```java
+/**
+ * 제한된 지네릭 클래스
+ * Fruit타입만 타입 매개변수 T에 지정할 수 있다
+ * 다형성에서 조상타입 참조변수로 자손타입 객체를 가리킬 수 있는것 처럼 Fruit와 그 자손 타입까지 가능하다
+ * @param <T>
+ */
+public class FruitBoxExtendsFruit<T extends Fruit> extends Box {
+
+    ArrayList<T> list = new ArrayList<T>();
+
+}
+```
+
+### main.java
+
+```java
+FruitBoxExtendsFruit<Apple> appleFruitBox = new FruitBoxExtendsFruit<Apple>();
+//Fruit클래스의 자손들만 담을 수 있다는 제약이 추가되어 Toy는 못담음
+//FruitBox2<Toy> toyFruitBox = new FruitBox2<Toy>();
+
+//여전히 상속관계의 타입들 다 가능함
+FruitBoxExtendsFruit<Fruit> fruitBoxExtendsFruit = new FruitBoxExtendsFruit<Fruit>();
+fruitBoxExtendsFruit.add(new Apple());
+fruitBoxExtendsFruit.add(new Grape());
+
+```
+
+* 인터페이스를 구현해야 한다는 제약이 존재한다면
+### Fruit와 Eatable 인터페이스 구현
+
+```java
+
+public interface Eatable {
+}
+
+/**
+ * 인터페이스도 타입 매개변수 T에 지정할 수 있다
+ * extends를 사용하는 것에 주의
+ * Fruit의 자손이면서 Eatable인터페이스도 구현해야한다면 다음처럼 & 기호로 연결한다
+ * @param <T>
+ */
+public class FruitBoxExtendsFruitandEatable<T extends Fruit & Eatable> extends Box {
+
+    ArrayList<T> list = new ArrayList<T>();
+
+}
+```
+
+### Fruit의 자손이면서 Eatable을 구현한 클래스
+
+```java
+public class FruitImplEatable extends Fruit implements Eatable{
+
+    public String toString(){
+        return "Fruit";
+    }
+}
+```
+
+### main.java
+```java
+//Fruit의 자손이면서 Eatable을 구현하는 FruitImplEatable클래스를 타입으로 사용가능하다
+FruitBoxExtendsFruitandEatable<FruitImplEatable> fr = new FruitBoxExtendsFruitandEatable<FruitImplEatable>();
+
+fr.add(new Apple());
+fr.add(new Grape());
+```
+
+## 와일드 카드
+
+* 외일드 카드의 필요성
+
+### Juicer.java
+
+```java
+/**
+ * 매개변수에 과일박스를 대입하면 주스를 만들어 반환하는 Juicer클래스
+ * 이 클래스는 지네릭클래스도 아니고 static 은 타입 매개변수 T를 사용할 수 없다. 
+ * 그래서 Apple을 타입으로한 FruitBox를 매개변수로 넣어주면 에러가 발생..
+ */
+public class Juicer {
+    static Juice makeJuice(FruitBox<Fruit> box) {
+
+        String tmp = "";
+        for (Fruit f : box.getList()){
+            tmp += f + " ";
+        }
+        return new Juice(tmp);
+    }
+    
+    /*
+     * Apple타입을 사용하기 위해서 오버로딩 코드를 짜면 에러가 발생한다.
+     * 지네릭 타입이 다른것 만으로는 오버로딩이 성립하지 않기 때문이다. 
+     * 지네릭 타입은 컴파일 할때만 사용하고 제거하기 때문에 이는 메서드 중복 정의가 되어 에러가 난다.
+     */
+//    static Juice makeJuice(FruitBox<Apple> box) {
+//
+//        String tmp = "";
+//        for (Fruit f : box.getList()){
+//            tmp += f + " ";
+//        }
+//        return new Juice(tmp);
+//    }
+}
+```
+
+* 그래서 고안된것이 와일드 카드이다.
+* `<? extends T>` : 와일드 카드의 상한 제한, T와 그 자손들만 가능
+* `<? super T>` : 와일드 카드의 하한 제한, T와 그 조상들만 가능
+* `<?>` : 제한 없음 모든 타입이 가능하다 `<? extends Object` 와 동일
+
+```java
+public class Juicer {
+
+    /**
+     * 와일드 카드를 사용하면 FruitBox<Fruit>뿐만 아니라 Fruit<Apple>등 자손들도 사용가능하다.
+     */
+    static Juice makeJuice(FruitBox<? extends Fruit> box) {
+
+        String tmp = "";
+        for (Fruit f : box.getList()){
+            tmp += f + " ";
+        }
+        return new Juice(tmp);
+    }
+
+    /**
+     * 매개변수에 과일박스를 대입하면 주스를 만들어 반환하는 Juicer클래스
+     * 이 클래스는 지네릭클래스도 아니고 static 은 타입 매개변수 T를 사용할 수 없다.
+     * 그래서 Apple을 타입으로한 FruitBox를 매개변수로 넣어주면 에러가 발생..
+     */
+//    static Juice makeJuice(FruitBox<Fruit> box) {
+//
+//        String tmp = "";
+//        for (Fruit f : box.getList()){
+//            tmp += f + " ";
+//        }
+//        return new Juice(tmp);
+//    }
+
+    /**
+     * Apple타입을 사용하기 위해서 오버로딩 코드를 짜면 에러가 발생한다.
+     * 지네릭 타입이 다른것 만으로는 오버로딩이 성립하지 않기 때문이다.
+     * 지네릭 타입은 컴파일 할때만 사용하고 제거하기 때문에 이는 메서드 중복 정의가 되어 에러가 난다.
+     */
+//    static Juice makeJuice(FruitBox<Apple> box) {
+//
+//        String tmp = "";
+//        for (Fruit f : box.getList()){
+//            tmp += f + " ";
+//        }
+//        return new Juice(tmp);
+//    }
+}
+```
+
+### main.java
+
+```java
+FruitBox<Fruit> fruit_FruitBox = new FruitBox<Fruit>();
+FruitBox<Apple> apple_FruitBox = new FruitBox<Apple>();
+
+//Fruit와 그 자손인 Apple도 가능함
+System.out.println("Juicer.makeJuice(fruit_FruitBox) = " + Juicer.makeJuice(fruit_FruitBox));
+System.out.println("Juicer.makeJuice(apple_FruitBox) = " + Juicer.makeJuice(apple_FruitBox));
+```
+
 ## 지네릭 타입의 제거
 
 * 컴파일러는 지네릭 타입을 이용해 소스파일을 체크 한뒤 필요한 곳에 형변환을 넣어준다. 그리고 지네릭 타입을 제거한다.
