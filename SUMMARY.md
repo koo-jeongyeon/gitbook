@@ -39,7 +39,6 @@
   * [자바의 정석](language/java/standardofjava/README.md)
     * [generics](language/java/standardofjava/generics.md)
 
-
 ## server
 
 * [AWS](server/aws/README.md)
@@ -52,3 +51,7 @@
 
 * [캐릭터 이동](unity/playermove.md)
 * [카메라](unity/camera.md)
+
+## git
+
+* [git reset](git/git-reset.md)
