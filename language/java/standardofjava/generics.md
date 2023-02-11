@@ -274,7 +274,7 @@ public class Juicer {
 }
 ```
 
-### main.java
+* main.java
 ```java
 FruitBox<Fruit> fruit_FruitBox = new FruitBox<Fruit>();
 FruitBox<Apple> apple_FruitBox = new FruitBox<Apple>();
@@ -359,7 +359,7 @@ static <T> void sort (List<T> list, Comparator<? super T> c)
 ```
 이는 지네릭 메서드이다. list는 정렬할 대상, c는 정렬할 방법이 정의 된 Comparator이다.
 지금 와일드 카드가 사용되어 `new FruitComp`로도 Apple을 정렬할 수 있다.
-만일 와일드 카드를 사용하지 않는다면 Apple은 Comparator<Apple>로 Grape는 Comparator<Grape>로만 정렬할 수 있을것이다.
+만일 와일드 카드를 사용하지 않는다면 Apple은 `Comparator<Apple>`로 Grape는 `Comparator<Grape>`로만 정렬할 수 있을것이다.
 새로운 과일이 생길때마다 ~Comp.java를 만들어줄수는 없으니 와일드카드로 하한 제한을 해주는것이다.
 
 T에 Apple이 대입되면 다음과 같다
@@ -369,7 +369,7 @@ static <Apple> void sort (List<T> list, Comparator<? super Apple> c)
 `Comparator<? super Apple>`은 Comparator의 타입 매개변수로 Apple과 그 조상이 가능하다는거다.
 그래서 `new FruitComp`로 다른 과일들도 정렬가능하다. 
 
-몰론 과일의 조상을 Fruit로 상속해준다면.
+몰론 과일의 조상을 Fruit로 상속해주어야 한다.
 
 
 ## 지네릭 메서드
