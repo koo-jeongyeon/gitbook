@@ -62,8 +62,7 @@ class Box<T> {
 
 ## 지네릭 클래스의 객체 생성과 사용
 
-#### Box.java
-
+* Box.java
 ```java
 import java.util.ArrayList;
 
@@ -79,15 +78,13 @@ public class Box<T> {
 }
 ```
 
-#### FruitBox.java
-
+* FruitBox.java
 ```java
 public class FruitBox<T> extends Box<T>{
 }
 ```
 
-#### main.java
-
+* main.java
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -143,6 +140,7 @@ class Toy {
 
 ### extends 사용
 
+* FruitBoxExtendsFruit.java
 ```java
 /**
  * 제한된 지네릭 클래스
@@ -157,8 +155,7 @@ public class FruitBoxExtendsFruit<T extends Fruit> extends Box {
 }
 ```
 
-### main.java
-
+* main.java
 ```java
 FruitBoxExtendsFruit<Apple> appleFruitBox = new FruitBoxExtendsFruit<Apple>();
 //Fruit클래스의 자손들만 담을 수 있다는 제약이 추가되어 Toy는 못담음
@@ -171,11 +168,11 @@ fruitBoxExtendsFruit.add(new Grape());
 
 ```
 
-* 인터페이스를 구현해야 한다는 제약이 존재한다면
 ### Fruit와 Eatable 인터페이스 구현
+* 인터페이스를 구현해야 한다는 제약이 존재한다면
 
+* Eatable.interface
 ```java
-
 public interface Eatable {
 }
 
@@ -192,8 +189,7 @@ public class FruitBoxExtendsFruitandEatable<T extends Fruit & Eatable> extends B
 }
 ```
 
-### Fruit의 자손이면서 Eatable을 구현한 클래스
-
+* Fruit의 자손이면서 Eatable을 구현한 클래스
 ```java
 public class FruitImplEatable extends Fruit implements Eatable{
 
@@ -203,7 +199,7 @@ public class FruitImplEatable extends Fruit implements Eatable{
 }
 ```
 
-### main.java
+* main.java
 ```java
 //Fruit의 자손이면서 Eatable을 구현하는 FruitImplEatable클래스를 타입으로 사용가능하다
 FruitBoxExtendsFruitandEatable<FruitImplEatable> fr = new FruitBoxExtendsFruitandEatable<FruitImplEatable>();
@@ -214,47 +210,25 @@ fr.add(new Grape());
 
 ## 와일드 카드
 
-* 외일드 카드의 필요성
-
-### Juicer.java
-
-```java
-/**
- * 매개변수에 과일박스를 대입하면 주스를 만들어 반환하는 Juicer클래스
- * 이 클래스는 지네릭클래스도 아니고 static 은 타입 매개변수 T를 사용할 수 없다. 
- * 그래서 Apple을 타입으로한 FruitBox를 매개변수로 넣어주면 에러가 발생..
- */
-public class Juicer {
-    static Juice makeJuice(FruitBox<Fruit> box) {
-
-        String tmp = "";
-        for (Fruit f : box.getList()){
-            tmp += f + " ";
-        }
-        return new Juice(tmp);
-    }
-    
-    /*
-     * Apple타입을 사용하기 위해서 오버로딩 코드를 짜면 에러가 발생한다.
-     * 지네릭 타입이 다른것 만으로는 오버로딩이 성립하지 않기 때문이다. 
-     * 지네릭 타입은 컴파일 할때만 사용하고 제거하기 때문에 이는 메서드 중복 정의가 되어 에러가 난다.
-     */
-//    static Juice makeJuice(FruitBox<Apple> box) {
-//
-//        String tmp = "";
-//        for (Fruit f : box.getList()){
-//            tmp += f + " ";
-//        }
-//        return new Juice(tmp);
-//    }
-}
-```
-
-* 그래서 고안된것이 와일드 카드이다.
 * `<? extends T>` : 와일드 카드의 상한 제한, T와 그 자손들만 가능
 * `<? super T>` : 와일드 카드의 하한 제한, T와 그 조상들만 가능
 * `<?>` : 제한 없음 모든 타입이 가능하다 `<? extends Object` 와 동일
 
+### 외일드 카드의 필요성
+
+* Juice.java
+```java
+public class Juice {
+    String name;
+
+    Juice(String name) {
+        this.name = name + "Juice";
+    }
+    public String toString(){ return name; }
+}
+```
+
+* Juicer.java
 ```java
 public class Juicer {
 
@@ -301,7 +275,6 @@ public class Juicer {
 ```
 
 ### main.java
-
 ```java
 FruitBox<Fruit> fruit_FruitBox = new FruitBox<Fruit>();
 FruitBox<Apple> apple_FruitBox = new FruitBox<Apple>();
@@ -310,6 +283,99 @@ FruitBox<Apple> apple_FruitBox = new FruitBox<Apple>();
 System.out.println("Juicer.makeJuice(fruit_FruitBox) = " + Juicer.makeJuice(fruit_FruitBox));
 System.out.println("Juicer.makeJuice(apple_FruitBox) = " + Juicer.makeJuice(apple_FruitBox));
 ```
+
+### Collections.sort()를 이용한 정렬
+
+* Fruit
+```java
+class Fruit {
+
+    String name;
+    int weight;
+
+    Fruit(String name, int weight){
+        this.name = name;
+        this.weight = weight;
+    }
+    public String toString(){
+        return name+"{"+weight+"}";
+    }
+}
+
+public class FruitComp implements Comparator<Fruit> {
+
+    public int compare(Fruit t1, Fruit t2){
+        return t1.weight = t2.weight;
+    }
+}
+```
+
+* Apple
+```java
+class Apple extends Fruit {
+    Apple(String name, int weight) {
+        super(name, weight);
+    }
+
+    public String toString(){
+        return name+"{"+weight+"}";
+    }
+}
+
+public class AppleComp implements Comparator<Apple> {
+
+    public int compare(Apple t1, Apple t2){
+        return t2.weight - t1.weight;
+    }
+}
+```
+
+* main.java
+```java
+public class Main {
+    public static void main(String[] args) {
+
+        FruitBox<Apple> appleBox = new FruitBox<Apple>();
+
+        appleBox.add(new Apple("GreenApple", 300));
+        appleBox.add(new Apple("GreenApple", 100));
+        appleBox.add(new Apple("GreenApple", 200));
+
+        Collections.sort(appleBox.getList(), new AppleComp());
+        System.out.println("appleBox = " + appleBox);
+
+        Collections.sort(appleBox.getList(), new FruitComp());
+        System.out.println("appleBox = " + appleBox);
+
+    }
+}
+```
+
+이는 Collections.sort()를 이용해 appleBox에 담긴 과일을 무게별로 정렬하는 것이다.
+Collections의 선언부는 다음과 같다
+
+```java
+static <T> void sort (List<T> list, Comparator<? super T> c)
+```
+이는 지네릭 메서드이다. list는 정렬할 대상, c는 정렬할 방법이 정의 된 Comparator이다.
+지금 와일드 카드가 사용되어 `new FruitComp`로도 Apple을 정렬할 수 있다.
+만일 와일드 카드를 사용하지 않는다면 Apple은 Comparator<Apple>로 Grape는 Comparator<Grape>로만 정렬할 수 있을것이다.
+새로운 과일이 생길때마다 ~Comp.java를 만들어줄수는 없으니 와일드카드로 하한 제한을 해주는것이다.
+
+T에 Apple이 대입되면 다음과 같다
+```java
+static <Apple> void sort (List<T> list, Comparator<? super Apple> c)
+```
+`Comparator<? super Apple>`은 Comparator의 타입 매개변수로 Apple과 그 조상이 가능하다는거다.
+그래서 `new FruitComp`로 다른 과일들도 정렬가능하다. 
+
+몰론 과일의 조상을 Fruit로 상속해준다면.
+
+
+## 지네릭 메서드
+
+
+
 
 ## 지네릭 타입의 제거
 
