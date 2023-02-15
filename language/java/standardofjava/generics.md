@@ -374,8 +374,99 @@ static <Apple> void sort (List<T> list, Comparator<? super Apple> c)
 
 ## 지네릭 메서드
 
+* 메서드 선언부에 지네릭 타입이 선언된 메서드를 지네릭 메서드라 한다.
+* 지네릭 클래스에 정의된 타입 매개변수와 지네릭 메서드에 정의 된 매개변수는 전혀 별개의 것이다. 
+* static 멤버에는 타입 매개변수를 사용할 수 없지만 메서드에 지네릭 타입을 선언하고 사용하는 것은 가능하다.
+* 이 타입 매개변수는 메서드 내에서만 지역적으로 사용되기 때문에 지역변수를 선언한 것과 같다고 생각하면 이해하기 쉽다. 그렇기에 static 이든 아니든 상관이 없다.
 
+* makeJuice를 지네릭 메서드로 바꾸면 다음과 같다.
+```java
+ static <T extends Fruit>Juice makeJuice (FruitBox<T> box) {
+	String tmp = "";
+	for(Fruit f : box.getList()) {
+		 tmp += f + " ";
+	}
+	return new Juice(tmp);
+}
+```
 
+* 이 메서드를 호출할 땐 아래와 같이 타입 변수에 타입을 대입해야 한다.
+* 하지만 대부분의 경우 컴파일러가 타입을 추정할 수 있어 생략해도 된다. 
+* 한 가지 주의할 점은 지네릭 메서드를 호출할 때 대입된 타입을 생략할 수 없는 경우에는 참조변수나 클래스 이름을 생략할 수 없다는 것이다. 단지 기술적인 이유이므로 지켜야한다. 
+```java
+FruitBox<Fruit> fruit_FruitBox = new FruitBox<Fruit>();
+FruitBox<Apple> apple_FruitBox = new FruitBox<Apple>();
+
+//Fruit와 그 자손인 Apple도 가능함
+System.out.println("Juicer.makeJuice(fruit_FruitBox) = " + Juicer.<Fruit>makeJuice(fruit_FruitBox));
+System.out.println("Juicer.makeJuice(apple_FruitBox) = " + Juicer.<Apple>makeJuice(apple_FruitBox));
+```
+
+* 매개변수의 타입이 복잡할 때 유용하게 사용가능하다.
+```java
+ static void printAll (ArrayList<? extends Product> list,
+                       ArrayList<? extends Product> list2) {
+    for (Unit u : list){
+        System.out.println(u);
+    }
+}
+//위의 코드를 간략하게 변경
+ static <T extends Product> void printAll (ArrayList<T> list,
+                                           ArrayList<T> list2) {
+    for (Unit u : list){
+        System.out.println(u);
+    }
+}
+```
+
+## 지네릭 타입의 형변환
+
+* 지네릭 타입과 지네릭 타입이 아닌 타입간의 형변환은 항상 가능하다. 
+* 하지만 대입된 타입이 다른 지네릭 타입 간에는 형변환이 불가하다. 
+```java
+Box<Object> objBox = null;
+Box<String> strBox = null;
+
+objBox = (Box<Object>) strBox; //에러
+
+//이미 아래와 같은 방식으로 생성이 불가능하다는 것을 배웠다 이는 위처럼 형변환이 불가능하다는 것을 간접적으로 알려준다.
+Box<Object> objBox = new Box<String>();
+
+//하지만 다음의 문장은 형변환이 가능하다
+Box<? extends Object> objBox = new Box<String>();
+//반대의 경우는 성립하지만 확인되지 않은 형변환이라는 경고가 발생한다.
+FruitBox<? extends Fruit> box = null;
+Box<Apple> appleBox = (FruitBox<Apple>) box;
+```
+
+### Optional 클래스
+```java
+public final class Optional<T> {
+
+    //EMPTY에 비어있는 Optional 객체를 생성해서 저장
+    private static final Optional<?> EMPTY = new Optional<>();
+    //<?> -> <? extends Object>를 줄여쓴것
+    //<>안에 생략된 타입은 <Object>이다
+    //따라서 풀어쓰면 Optional<? extends Object> EMPTY = new Optional<Object>();
+    private final T value;
+
+    //EMPTY를 형변환해서 반환
+    //EMPTY의 타입을 Optional<Object>가 아닌 Optional<?>로 한 이유는 Optional<T>로 형변환이 가능하기 때문이다. 만약 Optional<Object>면 형변환이 불가능하다. 
+    public static<T> Optional<T> empty() {
+        Optional<T> t = (Optional<T>) EMPTY;
+        return t;
+    }
+}
+```
+* 정리하면 `Optional<Object>`를 `Optional<String>`으로 직접 형변환 하는것은 불가능하지만 와일드 카드가 포함된 지네릭 타입으로 형변환 하면 가능하다는 것이다.
+* 참고로 와일드 카드가 사용된 지네릭 타입끼리도 다음과 같은 경우에 형변환이 가능하다. 다만 미확정 타입으로 형변환 하는 것이라는 경고가 뜬다.
+```java
+FruitBox<? extends Object> objBox = null;
+FruitBox<? extends String> strBox = null;
+
+strBox = (FruitBox<? extends String>) objBox;
+objBox = (FruitBox<? extends Object>) strBox;
+```
 
 ## 지네릭 타입의 제거
 
