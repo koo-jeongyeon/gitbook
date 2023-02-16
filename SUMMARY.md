@@ -42,10 +42,14 @@
 ## server
 
 * [AWS](server/aws/README.md)
-  * [MongoDB & Lambda VPC peering ,endpoint설정](server/aws/vpcpeering.md)
   * [SAM 개념](server/aws/sam1.md)
-  * [SAM S3이벤트 테스트](server/aws/sam2.md)
+  * [SAM Lambda S3이벤트 트리거, MongoDB 접근코드](server/aws/sam2.md)
+  * [MongoDB & Lambda VPC peering ,endpoint설정](server/aws/vpcpeering.md)
   * [SAM intellij 배포](server/aws/sam3.md)
+  * [AWS CLI 설치 & 명령어](server/aws/cli.md)
+  * [AWS IAM](server/aws/iam.md)
+  * [eb 설치 & 명령어](server/aws/eb.md)
+  
 
 ## unity
 
