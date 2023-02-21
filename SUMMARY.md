@@ -33,6 +33,7 @@
     * [tiles](springboot/lib/tiles.md)
 * [vue](vue/README.md)
   * [Spring boot & Vue.js 설치 및 연동](vue/setting.md)
+  * [Spring boot & Vue.js 웹개발 세팅](vue/setting2.md)
   * [vue의 기본구조 실행순서](vue/context.md)
   * [SPA 이해](vue/spa.md)
 
