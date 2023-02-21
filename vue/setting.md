@@ -38,6 +38,8 @@ npm install -g @vue/cli
 
 - 아래 명령어로 vue-cli에서 미리 세팅된 몇가지 템플릿을 사용해 frontend 라는 vue project를 생성해준다.
 
+- vue-cli 3.0 부터는 프로젝트 생성시 의존된 라이브러리도 함께 생성된다. 
+
 ```jsx
 // spring boot project 루트에서 진행
 vue create frontend
