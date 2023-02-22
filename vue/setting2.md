@@ -1,6 +1,5 @@
 # Spring boot & Vue.js 웹개발 세팅
 
-
 ## Vue를 쓰는 이유
 
 [웹개발은 어떻게 구성해야 하는가](https://www.softmoa.com/sprt/blog/sprtBlogPost.pem/1846)
@@ -124,3 +123,8 @@ src/App.vue에 router-link로 테스트 해봅니다.
 [gradle로 한번에 빌드하기](https://herojoon-dev.tistory.com/25)
 
 gradle build 명령어를 통해 스프링부트와 vue 둘다 한번에 빌드하도록 설정 가능하다. 
+
+
+
+## 참고
+[vue 입문가이드](https://joshua1988.github.io/web-development/vuejs/vuejs-tutorial-for-beginner/)
