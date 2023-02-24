@@ -192,9 +192,39 @@ public class PrincipalDetailsService implements UserDetailsService{
 }
 ```
 
+### 특정주소에 직접 권한걸기
+
+SecurityConfig 에 아래와같은 어노테이션을 걸어주면 특정어노테이션이 활성화가 된다.
+
+securedEnabled는 @Secured 를 활성화 하고
+
+prePostEnabled는 @PreAuthorize 와 @PostAuthorize 를 활성화 시킴
+
+```java
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true) // 특정 주소 접근시 권한 및 인증을 위한 어노테이션 활성화
+public class SecurityConfig extends WebSecurityConfigurerAdapter{
+```
 
 
 
+그리고 아래와 같이 사용한다.
+
+```java
+//권한 하나만 걸고싶으면 secured
+@Secured("ROLE_ADMIN")
+@GetMapping("/info")
+public @ResponseBody String info() {
+   return "개인정보";
+}
+
+//권한 여러개를 걸고싶으면 preAuthorize
+@PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')") //data메서드 실행되기 전 실행
+@PostAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')") //data메서드 실행후에 실행됨, 잘 안씀
+@GetMapping("/info")
+public @ResponseBody String data() {
+   return "데이터 정보";
+}
+```
 
 
 
