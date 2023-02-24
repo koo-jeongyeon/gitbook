@@ -6,6 +6,8 @@
 
 참고한 깃허브
 
+직접 코드를 수정하고 실행해보면서 테스트 해보는게 이해하기 제일 좋습니다.
+
 {% embed url="https://github.com/codingspecialist/Sringboot-Security-Basic-V1" %}
 
 ## 기본형태
@@ -32,7 +34,7 @@ public @ResponseBody String index() {
 
 
 
-## 권한설정
+## 로그인 및 권한설정
 
 / 경로를 로그인한 유저만 접근가능하고, /admin 경로는 어드민만, /manager 경로는 매니저만 접근 가능하도록 권한설정을 해주는 방법
 
@@ -63,7 +65,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 * 위와 같은 방식으로 특정 경로에 권한 설정을 해줄수있다. loginPage() 설정으로 인해 권한없는 페이지로 이동시 에러페이지가 뜨는게 아니라 로그인 경로로 이동됨
 * loginProcessingUrl로 인해서 시큐리티가 로그인을 대신 진행해주어 컨트롤러에 따로 만들 필요가 없다.
 
-
+### 패스워드
 
 패스워드를 꼭 암호화 해주어야 하기 때문에 SecurityConfig에 아래와 같은 코드도 설정해준다.
 
@@ -86,6 +88,107 @@ public String joinProc(User user) {
    user.setRole("ROLE_USER");
    userRepository.save(user);
    return "redirect:/";
+}
+```
+
+### UserDetails
+
+* 시큐리티가 낚아채서 로그인을 진행 시킬때 로그인이 완료가 되면 시큐리티 session을 만들어낸다. 시큐리티의 세션이 존재함. (Security ContextHolder)
+* 세션에 들어갈수있는 오브젝트 => Authenticaion 타입 객체로 정해져 있다.&#x20;
+* Authenticaion 안에 User 정보가 있어야 됨&#x20;
+* User 오브젝트 타입 => UserDetails 타입 객체로 정혀져 있다.&#x20;
+
+`UserDetails` 를 구현하는 `PrincipalDetails` 가 필요하다.
+
+```java
+@Data
+public class PrincipalDetails implements UserDetails{
+
+	private User user;
+
+	public PrincipalDetails(User user) {
+		super();
+		this.user = user;
+	}
+	
+	@Override
+	public String getPassword() {
+		return user.getPassword();
+	}
+
+	@Override
+	public String getUsername() {
+		return user.getUsername();
+	}
+
+	//계정 만료
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	//계정 잠김
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	//계정 기간
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	//계정 활성화 
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
+
+	//해당 유저의 권한을 리턴하는 곳
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		Collection<GrantedAuthority> collet = new ArrayList<GrantedAuthority>();
+		collet.add(()->{ return user.getRole();});
+		return collet;
+	}
+	
+}
+```
+
+#### getAuthorities
+
+`getAuthorities` 는 해당 유저의 권한을 리턴하는데 현재 유저의 권한은 role로 스트링타입이다. 근데 타입이 정해져있으니 `Collection<GrantedAuthority>` 객체를 생성해주어야한다. (ArrayList는 Collection의 자식)
+
+#### isEnabled&#x20;
+
+사이트에서 1년동안 로그인 안하면 휴면 계정으로 변경할때, 컬럼에 login할때마다 날짜를 저장하는 컬럼을 두고 그걸로 현재시간과 로그인 시간의 차이가 1년을 초과했을때 리턴은 false로 하면됨
+
+### UserDetailsService
+
+* 로그인시 스프링은 IoC컨테이너에서 UserDetailsService 빈을 찾아 loadUserByUsername을 호출함
+* username 파라미터를 가져옴(클라이언트에서 넘겨준 이름 그대로)
+* UserDetails 로 리턴된 값은 Authentication 내부로 들어감. 그리고 그 객체는 또 세션으로 들어가니 다음과 같은 모양새가 됨. `시큐리티 session(내부 Authentication(내부 UserDetails))`
+
+```java
+// 시큐리티 설정에서 loginProcessingUrl 걸어놨기 때문에 로그인 요청이 오면 자동으로
+// UserDetailsService 타입으로 IoC되어있는 loadUserByUsername 함수가 실행됨 (규칙임)
+@Service
+public class PrincipalDetailsService implements UserDetailsService{
+
+   @Autowired
+   private UserRepository userRepository;
+
+   //알아서 다해줌 
+   @Override
+   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+      User user = userRepository.findByUsername(username);
+      if(user == null) {
+         return null;
+      }
+      return new PrincipalDetails(user);
+   }
+
 }
 ```
 
