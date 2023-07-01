@@ -31,7 +31,6 @@
     * [hidetake.ssh 키파일 설정](springboot/gradle/gradle1.md)
   * [maven](springboot/maven/README.md)
     * [maven tomcat](springboot/maven/maven1.md)
-  * [security and JWT](springboot/securityJWT/README.md)
   * [lib](springboot/lib/README.md)
     * [lombok](springboot/lib/lombok.md)
     * [tiles](springboot/lib/tiles.md)
