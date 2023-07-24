@@ -2,6 +2,12 @@
 
 * [🖐 Welcome](README.md)
 
+## CS
+
+* [history](history/README.md)
+* [data structure & algorism](datastructure/README.md)
+  * [자료구조의 정의 및 종류](datastructure/datastructure_definition.md)
+
 ## Spring
 
 * [spring boot](springboot/README.md)
