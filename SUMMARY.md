@@ -6,7 +6,7 @@
 
 * [history](history/README.md)
 * [data structure & algorism](datastructure/README.md)
-  * [자료구조의 정의 및 종류](datastructure/datastructure_definition.md)
+  * [자료구조의 정의 및 종류](datastructure/datastructure\_definition.md)
 
 ## Spring
 
@@ -74,3 +74,8 @@
 ## git
 
 * [git reset](git/git-reset.md)
+
+## 방통대 <a href="#school" id="school"></a>
+
+* [딥러닝](school/deeplearning/README.md)
+  * [1강.신경망의 개요](school/deeplearning/step1.md)
