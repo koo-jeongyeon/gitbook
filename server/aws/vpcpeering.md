@@ -1,11 +1,8 @@
 # MongoDB & Lambda VPC peering ,endpoint설정
 
-상태: Done
-생성일: 2023년 1월 12일 오후 5:06
-유형: 세팅
+상태: Done 생성일: 2023년 1월 12일 오후 5:06 유형: 세팅
 
 > **S3에 파일업로드시 lambda가 실행되어 MongoDB의 데이터를 변경하는 작업을 위해 세팅해주어야 하는 요소들이 있다.** MongoDB Atlas와는 Peering으로 VPC를 연결해 주어야하고 람다를 VPC내부 private subnet 에 생성해주어야한다. 그리고 S3는 private subne에 접근하지 못하기 때문에 VPC endpoint 설정을 해주어야 정상적으로 작동한다.
-> 
 
 ## VPC peering
 
@@ -19,13 +16,13 @@
 
 ![스크린샷 2023-01-12 오후 5.40.43.png](../../image/vpcpeering2.png)
 
-1. vpc와 연결된 보안그룹이 없으면 생성해줌 
+1. vpc와 연결된 보안그룹이 없으면 생성해줌
 
-- 기존에 있는 VPC를 사용한다면 새로 생성해줄 필요없음
+* 기존에 있는 VPC를 사용한다면 새로 생성해줄 필요없음
 
 ![Untitled](vpcpeering3.png)
 
-1. mongoDB peering Connection 
+1. mongoDB peering Connection
 
 위에서 설정한 aws의 적절한 정보를 작성해줌
 
@@ -49,11 +46,11 @@ Now all you have to do is accept the peering connection in your AWS account and 
 
 ![스크린샷 2023-01-13 오전 10.04.36.png](../../image/vpcpeering8.png)
 
-라우팅 테이블 : 같은 VPC 내에서 서브넷A → 서브넷B를 연결할때 나침반처럼, 172.31.0.0 ~ 172.31.255.255 의 요청은 local로 같은 VPC내 로컬에서 찾도록 해주고, 그외 모든 IP대역은 인터넷 게이트웨이와 라우팅되어 인터넷과 연결된다.
+라우팅 테이블 : 같은 VPC 내에서 서브넷A → 서브넷B를 연결할때 나침반처럼, 172.31.0.0 \~ 172.31.255.255 의 요청은 local로 같은 VPC내 로컬에서 찾도록 해주고, 그외 모든 IP대역은 인터넷 게이트웨이와 라우팅되어 인터넷과 연결된다.
 
 현재 192.168.248.0/21(Atlas VPC CIDR)를 추가하여 이 IP대역으로 요청을 보낼땐 피어링연결이 된 MongoDB Atlas쪽 VPC로 라우팅 되도록 세팅해준것
 
----
+
 
 ## Lambda VPC 세팅
 
@@ -75,12 +72,12 @@ Resources:
 			   - subnet-***
 ```
 
-- 람다를 vpc에 생성할때 private subnet을 써야하는 이유? 아직 모르겠음
+* 람다를 vpc에 생성할때 private subnet을 써야하는 이유? 아직 모르겠음
 
 그리고 VPC에 **엔드포인트**를 설정해야한다.
 
-- VPC 엔드포인트?
-- AWS를 벗어나지 않고 VPC의 외부서비스(=AWS서비스)와 프라이빗하게 연결하기 위해 사용한다. 이경우 퍼블릭으로 해당 서비스를 노출하지 않더라도 연동 할 수 있다.
+* VPC 엔드포인트?
+* AWS를 벗어나지 않고 VPC의 외부서비스(=AWS서비스)와 프라이빗하게 연결하기 위해 사용한다. 이경우 퍼블릭으로 해당 서비스를 노출하지 않더라도 연동 할 수 있다.
 
 ![스크린샷 2023-01-25 오후 12.13.36.png](../../image/vpcpeering9.png)
 
