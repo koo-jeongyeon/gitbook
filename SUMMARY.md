@@ -77,5 +77,7 @@
 
 ## 방통대 <a href="#school" id="school"></a>
 
+* [대학수학의 이해](school/math/README.md)
+  * [1강. 수학의 기초(1)](school/math/1-.-1.md)
 * [딥러닝](school/deeplearning/README.md)
   * [1강.신경망의 개요](school/deeplearning/step1.md)
