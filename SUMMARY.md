@@ -4,7 +4,6 @@
 
 ## CS
 
-* [history](history/README.md)
 * [data structure & algorism](datastructure/README.md)
   * [자료구조의 정의 및 종류](datastructure/datastructure\_definition.md)
 
@@ -48,32 +47,84 @@
   * [vue의 기본구조 실행순서](vue/context.md)
   * [SPA 이해](vue/spa.md)
 
-## language
+## JAVA
 
-* [java](language/java/README.md)
-  * [환경설정](language/java/setting.md)
-  * [자바의 정석](language/java/standardofjava/README.md)
-    * [generics](language/java/standardofjava/generics.md)
+* [환경설정](java/setting.md)
+* [자바의 정석](java/standardofjava/README.md)
+  * [generics](java/standardofjava/generics.md)
 
-## server
+## DATABASE
 
-* [AWS](server/aws/README.md)
-  * [SAM 개념](server/aws/sam1.md)
-  * [SAM Lambda S3이벤트 트리거, MongoDB 접근코드](server/aws/sam2.md)
-  * [MongoDB & Lambda VPC peering ,endpoint설정](server/aws/vpcpeering.md)
-  * [SAM intellij 배포](server/aws/sam3.md)
-  * [AWS CLI 설치 & 명령어](server/aws/cli.md)
-  * [AWS IAM](server/aws/iam.md)
-  * [eb 설치 & 명령어](server/aws/eb.md)
+* [mongoDB](database/mongodb/README.md)
+  * [정규표현식을 사용해 대소문자 구분없이 검색](database/mongodb/find.md)
+  * [mongoDB export import](database/mongodb/mongodb-export-import.md)
+  * [MAC 설치 및 실행](database/mongodb/mac.md)
+* [MYSQL](database/mysql/README.md)
+  * [\[에러\] 스프링 mysql 8 연결 에러](database/mysql/mysql-8.md)
+  * [MAC M1 mysql 설치](database/mysql/mac-m1-mysql.md)
+  * [GROUP BY 정리](database/mysql/group-by.md)
+  * [테이블 명세서 빠르게 생성](database/mysql/table-xsl.md)
+
+## AWS
+
+* [IAM](aws/iam.md)
+* [설치&명령어](aws/setup/README.md)
+  * [eb 설치 & 명령어](aws/setup/eb.md)
+  * [CLI 설치 & 명령어](aws/setup/cli.md)
+* [sam](aws/sam/README.md)
+  * [SAM 개념](aws/sam/sam1.md)
+  * [SAM Lambda S3이벤트 트리거, MongoDB 접근코드](aws/sam/sam2.md)
+  * [SAM intellij 배포](aws/sam/sam3.md)
+* [peering](aws/peering/README.md)
+  * [mongodb atlas AWS vpc peering](aws/peering/mongodb-atlas-aws-vpc-peering.md)
+  * [MongoDB & Lambda VPC peering ,endpoint설정](aws/peering/vpcpeering.md)
+
+## DOCKER
+
+* [컨테이너 접속 명령어](docker/access.md)
+* [호스트OS에서 컨테이너 내의 프로세스의 포트 확인](docker/hostos-container-port.md)
+* [이미지 빌드 관련 문제상황](docker/undefined.md)
+* [Docker 기초](docker/basic.md)
+* [MAC M1 도커실행](docker/mac-m1.md)
+* [\[에러\] docker: Error response from daemon: Mounts denied:](docker/docker-error-response-from-daemon-mounts-denied.md)
+
+## ELK
+
+* [로드벨런서에 logstash 세팅](elk/logstash-setup-nlb.md)
+* [filebeat 아키텍쳐](elk/filebeat-arh.md)
+* [Logstash는 로그를 왜 message라는 field로 저장할까?](elk/logstash-message-field.md)
+* [ELK 적용 사례, 로그수집(filebeat/logstash) 설명](elk/elk-filebeat-logstash.md)
+* [logstash health check](elk/logstash-health-check.md)
+* [Elastic Beanstalk + Elastic Cloud + docker 설정](elk/elastic-beanstalk-+-elastic-cloud-+-docker.md)
+* [ElasticCloud + filebeat + logstash + docker 설정 (버전8.5.0)](elk/elasticcloud-+-filebeat-+-logstash-+-docker-8.5.0.md)
 
 ## unity
 
-* [캐릭터 이동](unity/playermove.md)
-* [카메라](unity/camera.md)
+* [basic](unity/basic/README.md)
+  * [캐릭터 이동](unity/basic/playermove.md)
+  * [카메라](unity/basic/camera.md)
+
+## WORDPRESS
+
+* [Page 2](wordpress/page-2.md)
 
 ## git
 
+* [라이프사이클](git/lifecycle.md)
+* [defult 브랜치 main 으로 변경](git/defult-main.md)
+* [첫번째 커밋 삭제(브런치삭제) 후 원격저장소에 강제 push](git/branch-delete-push.md)
+* [git 원격저장소에 remote 방법(vscode로 진행)](git/git-remote-vscode.md)
+* [git gh](git/git-gh.md)
 * [git reset](git/git-reset.md)
+* [git rebase](git/git-rebase.md)
+
+## MAC
+
+* [app store 다운로드 없이 웹에서 Xcode 다운](mac/app-store-xcode.md)
+* [맥 초기 개발세팅](mac/setup.md)
+* [ubuntu iso 설치 usb 만들기](mac/ubuntu-iso-usb.md)
+* [응용프로그램 에러](mac/program-error.md)
+* [잠김 파일](mac/lockfile.md)
 
 ## 방통대 <a href="#school" id="school"></a>
 

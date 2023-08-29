@@ -20,7 +20,7 @@
 
 * 기존에 있는 VPC를 사용한다면 새로 생성해줄 필요없음
 
-![Untitled](vpcpeering3.png)
+![Untitled](../../server/aws/vpcpeering3.png)
 
 1. mongoDB peering Connection
 
@@ -50,7 +50,7 @@ Now all you have to do is accept the peering connection in your AWS account and 
 
 현재 192.168.248.0/21(Atlas VPC CIDR)를 추가하여 이 IP대역으로 요청을 보낼땐 피어링연결이 된 MongoDB Atlas쪽 VPC로 라우팅 되도록 세팅해준것
 
-
+***
 
 ## Lambda VPC 세팅
 
