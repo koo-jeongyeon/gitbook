@@ -41,6 +41,7 @@
   * [lib](springboot/lib/README.md)
     * [lombok](springboot/lib/lombok.md)
     * [tiles](springboot/lib/tiles.md)
+  * [API 부하테스트 툴 K6](spring/springboot/api-k6.md)
 * [vue](vue/README.md)
   * [Spring boot & Vue.js 설치 및 연동](vue/setting.md)
   * [Spring boot & Vue.js 웹개발 세팅](vue/setting2.md)
