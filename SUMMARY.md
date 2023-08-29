@@ -60,6 +60,7 @@
   * [mongoDB export import](database/mongodb/mongodb-export-import.md)
   * [MAC 설치 및 실행](database/mongodb/mac.md)
 * [MYSQL](database/mysql/README.md)
+  * [dbeaver 데이터 내보내기 불러오기](database/mysql/dbeaver.md)
   * [\[에러\] 스프링 mysql 8 연결 에러](database/mysql/mysql-8.md)
   * [MAC M1 mysql 설치](database/mysql/mac-m1-mysql.md)
   * [GROUP BY 정리](database/mysql/group-by.md)
