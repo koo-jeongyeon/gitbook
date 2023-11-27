@@ -1,5 +1,7 @@
 # Docker 기초
 
+## 도커 컨테이너 실행
+
 ```
 sudo docker container run -it --name ubuntu ubuntu:latest
 ```
@@ -14,9 +16,8 @@ sudo docker container run -it --name ubuntu ubuntu:latest
 * 특이한건 `container commit` 하면 컨테이너에서 이미지를 생성한다
 * `container export` 로 실행중인 컨테이너에서 파일을 생성해서 `import` 로 그 파일을 이미지로 생성할수도 있음
 
-***
+## 도커 파일 실행
 
-* `Dockerfile` 이라는것도 있음
 * 어떤 이미지를 베이스로 사용할지, 어떤포트를 열지 어떤 설정을 할지 작성함
 * 이런 파일의 내용을 기반으로 `빌드`를 하면 그 결과물로 이미지가 나옴
 

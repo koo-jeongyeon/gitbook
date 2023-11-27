@@ -12,7 +12,7 @@ Spring batch는.. 배치 프로세스를 주기적으로 커밋하며, 병렬적
 
 ## 아키텍처
 
-![batch.png](../../image/batch01.png)
+![batch.png](../../../image/batch01.png)
 
 Application : 개발자가 만든 모든 배치 Job과 커스텀 코드를 포함한다.&#x20;
 
