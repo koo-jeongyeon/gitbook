@@ -71,7 +71,6 @@
 
 ## AWS
 
-* [SSL 인증서 수동 갱신](aws/ssl.md)
 * [IAM](aws/iam.md)
 * [설치&명령어](aws/setup/README.md)
   * [eb 설치 & 명령어](aws/setup/eb.md)
