@@ -13,20 +13,20 @@ ELK에 로그스태치를 세팅
 
 환경을 만들고 **추가옵션구성**을 설정한다.
 
-<figure><img src="../.gitbook/assets/스크린샷 2022-12-27 오후 2.40.45.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/스크린샷 2022-12-27 오후 2.40.45.png" alt=""><figcaption></figcaption></figure>
 
 * 구성을 사용자 지정 구성으로 설정
 
-<figure><img src="../.gitbook/assets/스크린샷 2022-12-27 오후 2.41.08.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/스크린샷 2022-12-27 오후 2.41.08.png" alt=""><figcaption></figcaption></figure>
 
 * 용량을 로드 밸런싱 수행으로 설정
 
-<figure><img src="../.gitbook/assets/스크린샷 2022-12-27 오후 2.42.05.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/스크린샷 2022-12-27 오후 2.42.05.png" alt=""><figcaption></figcaption></figure>
 
 * 이 부분이 중요하다. 로드밸런서는 환경 생성시에 유형을 선택할 수 있는데 기본인 ALB로 선택하면 리스너 프로토콜을 TCP로 지정할 수 없어서 파일비트에서 로드밸런서로 데이터를 보내면 프로토콜 에러가 난다.
 * NLB로 설정하고 리스너와 프로세스를 아래처럼 설정한다.
 
-<figure><img src="../.gitbook/assets/스크린샷 2022-12-27 오후 2.45.56.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/스크린샷 2022-12-27 오후 2.45.56.png" alt=""><figcaption></figcaption></figure>
 
 * logstash 는 9600으로 헬스체크가 가능하다. 때문에 9600과 파일비트 데이터를 수신하는 5044 포트를 설정한다.
 

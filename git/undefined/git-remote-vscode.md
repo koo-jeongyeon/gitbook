@@ -79,4 +79,4 @@ push하기 전에 git status 로 commit 되었는지 확인하고 push 했으면
 
 You need to add a file to a commit before you can push your changes to a remote Git repository. If you create a new repository and forget to add a file to a commit, you may encounter the “src refspec master does not match any” error.2020. 9. 21.
 
-<figure><img src="../.gitbook/assets/giterr.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/giterr.png" alt=""><figcaption></figcaption></figure>

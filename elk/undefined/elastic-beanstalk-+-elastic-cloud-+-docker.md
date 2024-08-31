@@ -13,7 +13,7 @@
 
 플랫폼을 도커로 설정
 
-<figure><img src="../.gitbook/assets/1_QDtgrbeBT-47n8zNfs_6GQ.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/1_QDtgrbeBT-47n8zNfs_6GQ.png" alt=""><figcaption></figcaption></figure>
 
 1. ECR 에서 레파지토리 생성 & IAM권한 주기
 
@@ -23,7 +23,7 @@ Amazon Elastic Container Registry (ECS) 에 리포지토리 생성, 이름만 �
 
 AWS CLI 설정하고 IAM권한주고 이미지 올려주면됨
 
-<figure><img src="../.gitbook/assets/스크린샷 2022-11-16 오후 4.24.10.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/스크린샷 2022-11-16 오후 4.24.10.png" alt=""><figcaption></figcaption></figure>
 
 * Aws cli 다운 [https://devlos.tistory.com/37](https://devlos.tistory.com/37) (MAC기준)
 
@@ -85,14 +85,14 @@ Dockerrun.aws.json 파일 작성후 이파일을 배포
 2. beanstalk 세팅 변경
    1.  프록시 서버 없음으로 설정, 환경속성 설정
 
-       <figure><img src="../.gitbook/assets/스크린샷 2022-11-25 오후 3.19.33.png" alt=""><figcaption></figcaption></figure>
+       <figure><img src="../../.gitbook/assets/스크린샷 2022-11-25 오후 3.19.33.png" alt=""><figcaption></figcaption></figure>
    2. 보안 키페어 설정
    3. ECR 에서 레파지토리 생성 & IAM권한 주기 (공통)
    4. docker-compose.yml 파일 생성, 이미지 업로드 및 배포
 
 파일
 
-![](<../.gitbook/assets/스크린샷 2022-11-25 오후 5.46.11.png>)
+![](<../../.gitbook/assets/스크린샷 2022-11-25 오후 5.46.11.png>)
 
 #### filebeat
 
@@ -173,13 +173,13 @@ volumes:
 
 * elatic cloud의 키바나에서 pipeline1으로 logstash 파이프라인을 생성
 
-<figure><img src="../.gitbook/assets/스크린샷 2022-11-28 오전 10.14.11.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/스크린샷 2022-11-28 오전 10.14.11.png" alt=""><figcaption></figcaption></figure>
 
 5. docker-compose.yml 파일 생성, 이미지 업로드 및 배포
 
 파일
 
-![](<../.gitbook/assets/스크린샷 2022-11-25 오후 5.47.04.png>)
+![](<../../.gitbook/assets/스크린샷 2022-11-25 오후 5.47.04.png>)
 
 `logstash.yml`
 
