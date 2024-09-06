@@ -26,6 +26,129 @@ description: 전체 학습 메인페이지 (2024.08 시작)
 
 ***
 
+### REST API
+
+#### @RequestParam, @PathVariable, @RequestBody 적절한 사용
+
+#### 1. **`@RequestParam`**: URL의 쿼리 파라미터를 통해 데이터를 전달
+
+**특징**:
+
+* URL 쿼리 스트링으로 데이터를 전달합니다. (예: `?key=value`)
+* 주로 **필터링**, **검색**, **선택적 파라미터**에 사용됩니다.
+* 여러 개의 필드를 선택적으로 전달할 수 있습니다.
+
+**사용 상황**:
+
+* **필터링**: 다수의 검색 조건이나 필터 조건을 적용할 때.
+* **선택적 필드**: 파라미터가 필수가 아닌 경우.
+* **간단한 데이터**: 정수나 문자열 같은 간단한 값들을 받을 때.
+
+**예시**:
+
+```java
+java코드 복사@GetMapping("/invoices")
+public ApiResponse<List<OrderInvoices>> getOrderInvoices(
+        @RequestParam(value = "orderId", required = false) Long orderId,
+        @RequestParam(value = "customerName", required = false) String customerName) {
+    // 필터링 로직
+    return new ApiResponse<>(orderInvoiceService.findInvoices(orderId, customerName));
+}
+```
+
+**URL 예시**: `/invoices?orderId=123&customerName=John`
+
+***
+
+#### 2. **`@PathVariable`**: URL 경로의 일부로 데이터를 전달
+
+**특징**:
+
+* URL 경로에 포함된 값을 전달합니다. (예: `/invoices/{id}`)
+* 특정 리소스를 식별할 때 사용합니다.
+* **명확하게 하나의 리소스**를 대상으로 작업할 때 적합합니다.
+
+**사용 상황**:
+
+* **고유 식별자**: ID 등으로 리소스를 식별할 때.
+* **리소스 조회, 업데이트, 삭제**: 리소스와 관련된 작업을 할 때.
+
+**예시**:
+
+```java
+java코드 복사@GetMapping("/invoices/{orderId}")
+public ApiResponse<OrderInvoices> getOrderInvoice(@PathVariable Long orderId) {
+    // 단일 리소스 조회 로직
+    return new ApiResponse<>(orderInvoiceService.findByOrderId(orderId));
+}
+```
+
+**URL 예시**: `/invoices/123`
+
+***
+
+#### 3. **DTO 객체**: JSON 또는 Form 데이터로 복잡한 객체를 전달
+
+**특징**:
+
+* 요청 데이터를 **JSON 형식** 또는 **폼 데이터**로 받아서 객체로 매핑합니다.
+* **복잡한 데이터 구조**를 처리할 수 있습니다.
+* 주로 **POST, PUT, PATCH** 등의 요청에서 본문(body)에 데이터를 담아 전송합니다.
+
+**사용 상황**:
+
+* **복잡한 입력 데이터**: 여러 필드로 구성된 데이터를 받을 때.
+* **객체 단위의 입력**: 요청 본문에 JSON으로 데이터를 받아야 할 때.
+* **생성(create)** 또는 **수정(update)**: 데이터가 여러 필드로 구성된 경우.
+
+**예시**:
+
+```java
+java코드 복사@PostMapping("/invoices")
+public ApiResponse<OrderInvoices> createOrderInvoice(@RequestBody OrderInvoiceDto orderInvoiceDto) {
+    // DTO로 받은 데이터를 처리
+    return new ApiResponse<>(orderInvoiceService.create(orderInvoiceDto));
+}
+```
+
+**JSON 예시**:
+
+```json
+json코드 복사{
+  "orderId": 123,
+  "divName": "배송사",
+  "divCode": "ABC123",
+  "sheetNo": "123456",
+  "registedDate": "2024-09-06"
+}
+```
+
+***
+
+#### 차이점 요약 및 사용 가이드:
+
+1. **`@RequestParam`**:
+   * **데이터 전달 방식**: URL 쿼리 스트링.
+   * **주로 사용되는 HTTP 메서드**: `GET` (검색, 필터링 시 사용).
+   * **적용 상황**: 필터링, 검색 조건, 선택적 파라미터를 받을 때.
+   * **예시**: `/invoices?orderId=123&customerName=John`
+2. **`@PathVariable`**:
+   * **데이터 전달 방식**: URL 경로의 일부.
+   * **주로 사용되는 HTTP 메서드**: `GET`, `DELETE`, `PUT` (리소스 식별 시 사용).
+   * **적용 상황**: 리소스의 고유 ID로 단일 리소스를 조회, 수정, 삭제할 때.
+   * **예시**: `/invoices/123`
+3. **DTO 객체 (`@RequestBody`)**:
+   * **데이터 전달 방식**: 요청 본문(body)에 JSON 형식 또는 폼 데이터로 전달.
+   * **주로 사용되는 HTTP 메서드**: `POST`, `PUT`, `PATCH` (복잡한 데이터 입력 시 사용).
+   * **적용 상황**: 객체 형태로 여러 필드를 받거나, 대량의 데이터를 처리할 때.
+   * **예시**: 복잡한 주문 정보를 포함한 JSON을 `POST`로 전달할 때.
+
+CC. Chat GPT
+
+
+
+***
+
 ### AWS
 
 #### VPC 와 Subnet
