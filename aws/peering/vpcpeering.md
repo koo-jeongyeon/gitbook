@@ -10,11 +10,11 @@
 
 [Workshop - AWS Core Services](https://aws-core-services.ws.kabits.com/two-tier-application-linux/vpc/create-vpc/)
 
-![스크린샷 2023-01-12 오후 5.34.48.png](../../image/vpcpeering1.png)
+![스크린샷 2023-01-12 오후 5.34.48.png](../../.gitbook/assets/vpcpeering1.png)
 
 1. 아래와 같이 지정 후 생성
 
-![스크린샷 2023-01-12 오후 5.40.43.png](../../image/vpcpeering2.png)
+![스크린샷 2023-01-12 오후 5.40.43.png](../../.gitbook/assets/vpcpeering2.png)
 
 1. vpc와 연결된 보안그룹이 없으면 생성해줌
 
@@ -26,9 +26,9 @@
 
 위에서 설정한 aws의 적절한 정보를 작성해줌
 
-![스크린샷 2023-01-12 오후 5.46.58.png](../../image/vpcpeering4.png)
+![스크린샷 2023-01-12 오후 5.46.58.png](../../.gitbook/assets/vpcpeering4.png)
 
-![스크린샷 2023-01-12 오후 5.47.42.png](../../image/vpcpeering5.png)
+![스크린샷 2023-01-12 오후 5.47.42.png](../../.gitbook/assets/vpcpeering5.png)
 
 1. 아래와 같이 피어링 된 목록이 뜨고, 안내된 내용대로 피어링을 진행하면 됨
 
@@ -36,15 +36,15 @@ Now all you have to do is accept the peering connection in your AWS account and 
 
 → 이제 AWS 계정에서 피어링 연결을 수락하고 라우팅 테이블을 업데이트하여 Atlas VPC CIDR 블록에 대한 트래픽을 피어링 ID로 전송하기만 하면 됩니다.
 
-![스크린샷 2023-01-12 오후 5.52.24.png](../../image/vpcpeering6.png)
+![스크린샷 2023-01-12 오후 5.52.24.png](../../.gitbook/assets/vpcpeering6.png)
 
 1. AWS 의 피어링 연결 목록에서 피어링 요청 수락
 
-![스크린샷 2023-01-12 오후 5.52.03.png](../../image/vpcpeering7.png)
+![스크린샷 2023-01-12 오후 5.52.03.png](../../.gitbook/assets/vpcpeering7.png)
 
 1. 라우팅 테이블에서 Atlas VPC CIDR 블록에 대한 트래픽을 피어링 ID로 전송하도록 세팅
 
-![스크린샷 2023-01-13 오전 10.04.36.png](../../image/vpcpeering8.png)
+![스크린샷 2023-01-13 오전 10.04.36.png](../../.gitbook/assets/vpcpeering8.png)
 
 라우팅 테이블 : 같은 VPC 내에서 서브넷A → 서브넷B를 연결할때 나침반처럼, 172.31.0.0 \~ 172.31.255.255 의 요청은 local로 같은 VPC내 로컬에서 찾도록 해주고, 그외 모든 IP대역은 인터넷 게이트웨이와 라우팅되어 인터넷과 연결된다.
 
@@ -79,7 +79,7 @@ Resources:
 * VPC 엔드포인트?
 * AWS를 벗어나지 않고 VPC의 외부서비스(=AWS서비스)와 프라이빗하게 연결하기 위해 사용한다. 이경우 퍼블릭으로 해당 서비스를 노출하지 않더라도 연동 할 수 있다.
 
-![스크린샷 2023-01-25 오후 12.13.36.png](../../image/vpcpeering9.png)
+![스크린샷 2023-01-25 오후 12.13.36.png](../../.gitbook/assets/vpcpeering9.png)
 
 [VPC에서 Lambda 함수에 인터넷 액세스 권한 부여](https://aws.amazon.com/ko/premiumsupport/knowledge-center/internet-access-lambda-function/)
 

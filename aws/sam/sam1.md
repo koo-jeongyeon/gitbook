@@ -1,8 +1,6 @@
 # SAM 개념
 
-상태: Done
-생성일: 2023년 1월 9일 오후 3:11
-유형: 개념
+상태: Done 생성일: 2023년 1월 9일 오후 3:11 유형: 개념
 
 AWS SAM(Serverless Application Model)은 AWS 환경에서 서버리스 애플리케이션을 구축할 때 사용할 수 있도록 AWS가 공식으로 제공하는 프레임워크이다.
 
@@ -10,9 +8,9 @@ SAM은 AWS CloudFormation이 확장된 형태로, 배포 과정에서 SAM Templa
 
 SAM을 통해 구축할 수 있는 AWS 서비스의 종류는 다음과 같다.
 
-- API Gateway
-- DynamoDB
-- Lambda Function/Layer/Application
+* API Gateway
+* DynamoDB
+* Lambda Function/Layer/Application
 
 ```jsx
 AWSTemplateFormatVersion: '2010-09-09'
@@ -59,19 +57,19 @@ Outputs:
     Value: !GetAtt HelloWorldFunctionRole.Arn
 ```
 
-- **Transform 선언:** SAM Template임을 명시해야 함.
-- **Globals 섹션:** 서버리스 애플리케이션에 공통적으로 적용되는 속성을 정의함.
-- **Resources 섹션:** CloudFormation 리소스와 SAM 리소스를 정의함.
+* **Transform 선언:** SAM Template임을 명시해야 함.
+* **Globals 섹션:** 서버리스 애플리케이션에 공통적으로 적용되는 속성을 정의함.
+* **Resources 섹션:** CloudFormation 리소스와 SAM 리소스를 정의함.
 
 ### 문제
 
-- CloudFormation 코드에 익숙하지 않다면 러닝 커브가 있을 수 있음
+* CloudFormation 코드에 익숙하지 않다면 러닝 커브가 있을 수 있음
 
 ### 그렇다면 CloudFormation는 무엇인가?
 
-[[AWS] AWS CloudFormation 의 개념](https://nearhome.tistory.com/117)
+[\[AWS\] AWS CloudFormation 의 개념](https://nearhome.tistory.com/117)
 
-![스크린샷 2023-01-10 오후 4.50.29.png](../../image/sam1.png)
+![스크린샷 2023-01-10 오후 4.50.29.png](../../.gitbook/assets/sam1.png)
 
 aws 리소스와 속성이 정의된 템플릿을 생성하여
 

@@ -1,13 +1,13 @@
-# [VSCODE setting] Spring boot + JSP(+Tiles) + MyBatis
+# Spring boot 프로젝트 생성
 
 생성일: 2022년 9월 2일 오후 10:19
 
 ### VSCODE setting
 
-- 스프링부트는 JSP 를 권장하지 않음
-- JSP를 사용하게 되면 WAR로 패키징 해야함, Tiles같은 라이브러리가 WAR에서만 정상작동 (직접확인함)
-- 또한 JAR로 패키징할때 JSP로딩에 문제가 있고 제약이 있다고함
-- 본인은 jsp라이브러리를 설치후 jar로 실행했을때 로딩은 잘 되었었으나 tiles 때문에 war로 패키징함
+* 스프링부트는 JSP 를 권장하지 않음
+* JSP를 사용하게 되면 WAR로 패키징 해야함, Tiles같은 라이브러리가 WAR에서만 정상작동 (직접확인함)
+* 또한 JAR로 패키징할때 JSP로딩에 문제가 있고 제약이 있다고함
+* 본인은 jsp라이브러리를 설치후 jar로 실행했을때 로딩은 잘 되었었으나 tiles 때문에 war로 패키징함
 
 Refer
 
@@ -66,7 +66,7 @@ war {
 }
 ```
 
-- jsp 사용을 위해 추가한 라이브러리들
+* jsp 사용을 위해 추가한 라이브러리들
 
 ```
 //jsp
@@ -96,9 +96,9 @@ mybatis:
     mapper-locations: classpath:mapper/**/*.xml
 ```
 
-- JSP 사용을 위한 파일 구조 webapp > WEB-INF > view
+* JSP 사용을 위한 파일 구조 webapp > WEB-INF > view
 
-![스크린샷 2022-09-02 오후 11.19.52.png](../../image/vscode2.png)
+![스크린샷 2022-09-02 오후 11.19.52.png](../../.gitbook/assets/vscode2.png)
 
 스프링부트에는 정적자원 접근을 위한 디폴트 설정이 있다
 
@@ -111,15 +111,15 @@ public class ResourceProperties {
 출처: https://warpgate3.tistory.com/164 [무명소졸의 웹개발:티스토리]
 ```
 
-![스크린샷 2022-09-02 오후 11.07.38.png](../../image/vscode1.png)
+![스크린샷 2022-09-02 오후 11.07.38.png](../../.gitbook/assets/vscode1.png)
 
 static 파일 아래 hello.html 파일을 두고
 
 [localhost:8080/hello.html](http://localhost:8080/hello.html) 을 호출하면 정상적으로 로드된다
 
-- 별도의 설정을 통해 원하는 URI패턴을 정해줄수도 있다
-    - static-path-pattern: /resources/** → /resources/hello.html 로 호출
-- prefix , suffix 설정 (ModelAndView객체에서 선언된 View Page를 지정해주는 클래스의 프로퍼티임)
+* 별도의 설정을 통해 원하는 URI패턴을 정해줄수도 있다
+  * static-path-pattern: /resources/\*\* → /resources/hello.html 로 호출
+* prefix , suffix 설정 (ModelAndView객체에서 선언된 View Page를 지정해주는 클래스의 프로퍼티임)
 
 ```
 spring:
@@ -132,7 +132,7 @@ spring:
 
 ### Tiles
 
-[TilesConfig.java](http://TilesConfig.java)
+[TilesConfig.java](http://tilesconfig.java)
 
 ```java
 import org.springframework.context.annotation.Bean;
@@ -163,9 +163,9 @@ public class TilesConfig {
 }
 ```
 
-- tiles 위치
+* tiles 위치
 
-![스크린샷 2022-09-02 오후 11.28.34.png](../../image/vscode3.png)
+![스크린샷 2022-09-02 오후 11.28.34.png](../../.gitbook/assets/vscode3.png)
 
 tiles.xml
 
@@ -202,7 +202,7 @@ tiles.xml
 
 layout.jsp
 
-- tiles.xml 에서 명시한 위치의 header, content, footer를 해댱위치에 넣어줌
+* tiles.xml 에서 명시한 위치의 header, content, footer를 해댱위치에 넣어줌
 
 ```java
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -221,7 +221,7 @@ layout.jsp
 
 Controller
 
-- tiles.xml 에서 설정한 대로 layout/*/* → layout/main/index 이런식으로 URI를 호출해야함
+* tiles.xml 에서 설정한 대로 layout/_/_ → layout/main/index 이런식으로 URI를 호출해야함
 
 ```java
 /**

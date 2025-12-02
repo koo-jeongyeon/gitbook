@@ -1,24 +1,24 @@
 # SAM intellij 배포
 
-상태: Done
-생성일: 2023년 1월 10일 오후 5:09
-유형: 세팅
+## SAM intellij 배포
 
-# 배포방식
+상태: Done 생성일: 2023년 1월 10일 오후 5:09 유형: 세팅
+
+## 배포방식
 
 1. template.yaml 을 우클릭하여 Sync Serverless Application 선택
 
-![스크린샷 2023-01-10 오후 5.11.51.png](../../image/sam2.png)
+![스크린샷 2023-01-10 오후 5.11.51.png](../../.gitbook/assets/sam2.png)
 
 1. 아래와 같이 Create Stack 에 스택의 이름을 정하고, 빌드 프로세스가 생성하는 배포 패키지를 호스팅할 S3 버킷을 선택하고 Sync를 누르면 CloudFormation을 사용하여 리소스를 구성하고 스택를 생성합니다
 
-![스크린샷 2023-01-10 오후 5.13.31.png](../../image/sam3.png)
+![스크린샷 2023-01-10 오후 5.13.31.png](../../.gitbook/assets/sam3.png)
 
 1. 배포가 완료된 모습
 
-![스크린샷 2023-01-10 오후 5.20.46.png](../../image/sam4.png)
+![스크린샷 2023-01-10 오후 5.20.46.png](../../.gitbook/assets/sam4.png)
 
-### 배포한 템플릿 코드
+#### 배포한 템플릿 코드
 
 ```jsx
 AWSTemplateFormatVersion: '2010-09-09'
@@ -57,13 +57,13 @@ Resources:
     Type: AWS::S3::Bucket
 ```
 
-# AWS Toolkit
+## AWS Toolkit
 
 AWS Toolkit 를 선택하면 왼쪽바에서 스택을 확인할 수도 있고
 
 CloudWatch 의 로그를 확인할 수도 있습니다
 
-![스크린샷 2023-01-10 오후 5.20.07.png](../../image/sam5.png)
+![스크린샷 2023-01-10 오후 5.20.07.png](../../.gitbook/assets/sam5.png)
 
 참고
 

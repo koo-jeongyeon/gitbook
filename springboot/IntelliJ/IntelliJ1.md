@@ -10,7 +10,7 @@
 
 위의 블로그와 동일하게 문제없이 spring 생성 진행하였음
 
-- git 이슈
+* git 이슈
 
 문제 : github 에 올릴때 git 으로만 올려봤는데 git bash 로 push 하는 부분에서 자꾸 먹통이남
 
@@ -18,13 +18,13 @@
 
 git 클론시 상당히 머리아픈 상황들이 있었음
 
-- 이슈
+* 이슈
 
 문제 : 톰캣 설정하려고 Artifacts 건드리는데 잘 안됨 뭔가 이상함
 
 해결 : 처음 클론 받았을때 오른족아래에 뜨는 알림 사항을 잘 누르고 창띄워서 ok 눌러줘야함 그래야 설정이 올바르게 되는듯, Artifacts 는 웹 어플리케이션 : expload 이걸로 만들고 directroy 를 web 으로 해줬음 out 에 자동 설정되는데 그건 바로바로 반영이 안됨 web으로 바꿔주고 서버 실행하면 web 아래에 META-INF 랑 WEB-INF 가 자동으로 생성된다
 
-- 톰캣이슈
+* 톰캣이슈
 
 문제 : 톰캣이 빌드 안되는 이상한 문제
 
@@ -32,13 +32,13 @@ git 클론시 상당히 머리아픈 상황들이 있었음
 
 진짜해결 : 아래 형광색 부분이 defaut 로 되어있으면 에러나는거였음
 
-![Untitled.png](../../image/Untitled.png)
+![Untitled.png](<../../.gitbook/assets/Untitled (4).png>)
 
 이클립스에도 시도??
 
 범중이는 인텔리제이 깔아주고 체험 시켜주는게 좋을듯
 
-- 클론받고 설정
+* 클론받고 설정
 
 문제 : iml 파일이 없어 클론 받고 메이븐 X 스프링 X
 
@@ -52,8 +52,8 @@ pom 에 스프링 설정을 했을때와
 
 설정완료된 상태
 
-![Untitled%201.png](../../image/Untitled%201.png)
+![Untitled%201.png](<../../.gitbook/assets/Untitled 1.png>)
 
-![Untitled%202.png](../../image/Untitled%202.png)
+![Untitled%202.png](<../../.gitbook/assets/Untitled 2.png>)
 
-![Untitled%203.png](../../image/Untitled%203.png)
+![Untitled%203.png](<../../.gitbook/assets/Untitled 3.png>)
